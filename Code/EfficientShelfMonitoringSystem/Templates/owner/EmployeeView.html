@@ -1,0 +1,110 @@
+{% extends 'owner/OwnerHome.html' %}
+{% block contents %}
+{% load static %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 95%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .message {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #eaf2f8;
+        color: #333;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <h2>Registered Employees</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Edit/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp1, emp2 in combined %}
+            <tr>
+                <td>{{ emp2.name }}</td>
+                <td>{{ emp1.username }}</td>
+                <td>{{ emp2.email }}</td>
+                <td>{{ emp2.phone }}</td>
+                <td>
+                    <a href="{% url 'EmpployeeEdit' emp1.id emp2.id %}">Edit</a> /
+                    <a href="{% url 'Emp_delete' emp1.id emp2.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="text-align: center;">No users found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% for message in messages %}
+    <div class="message">{{ message }}</div>
+    {% endfor %}
+</div>
+
+{% endblock %}
