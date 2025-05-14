@@ -7,12 +7,11 @@ Shelf-Track is an AI-driven system designed to monitor retail store shelves, det
 
 ## 🧰 Tech Stack
 
-- Python  
-- OpenCV  
-- TensorFlow *(or replace with PyTorch if you're using that)*  
-- NumPy  
-- Pandas  
-- Matplotlib / Seaborn *(for data visualization)*
+**CSS** – 57.0%  
+- **HTML** – 27.9%  
+- **Python** – 8.5%  
+- **SCSS** – 5.7%  
+- **JavaScript** – 0.9%
 
 ---
 
